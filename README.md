@@ -34,12 +34,30 @@ We now define `users` as a list containing the first 4 user records from the API
 ```python
 users = data['users'][:4]
 ```
-To process the data, we then:
+
+In order to get the data as required, we imported datetime from the datetime module.
+Inside the loop, we extracted the DOB string from the user dictionary (user['birthDate']).
+We defined the original format of the DOB string (replaced "%Y-%m-%d" with the actual format).
+We then used datetime.strptime to parse the DOB string into a datetime object and defined the new desired format ("%d/%m/%Y" for DD/MM/YYYY in this case).
+We used date_obj.strftime(new_format) to format the datetime object into the desired string format.
+We updated the 'DOB' key in the dictionary with the formatted string:
 
 ```python
 processed_data = []
 
 for user in users:
+    # Extract DOB as string
+    dob_str = user['birthDate']
+
+    # Use strptime to parse the existing format
+    from datetime import datetime
+    original_format = "%Y-%m-%d"  # Replace with the actual format if known
+    date_obj = datetime.strptime(dob_str, original_format)
+
+    # Use strftime to format the date in DD/MM/YYYY
+    new_format = "%d/%m/%Y"
+    formatted_dob = date_obj.strftime(new_format)
+
     processed_data.append({
         'Name': f"{user['firstName']} {user['lastName']}",
         'Email Address': user['email'],
@@ -48,8 +66,9 @@ for user in users:
         'Phone': user['phone'],
         'Latitude': user['address']['coordinates']['lat'],
         'Longitude': user['address']['coordinates']['lng'],
-        'DOB': user['birthDate']
-    })
+        'DOB': formatted_dob
+    }
+   )
 ```
 
 
