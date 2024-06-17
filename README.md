@@ -71,7 +71,6 @@ for user in users:
    )
 ```
 
-
 We created an empty list `processed_data` to store the processed user data.
 The `for user in users` loop iterates through each user in the users list. Using the `f"..."` syntax (f-strings), we perform data extraction: for each user, we extract required fields and populate a dictionary with formatted data such as `Name` (concatenating `firstName` and `lastName`), `Email Address` (extracting the email), and so forth.
 
