@@ -3,7 +3,10 @@
  **Objective**
 
 To fetch JSON data from [https://dummyjson.com/users/](https://dummyjson.com/users/) using Python, manipulate the data, and export the processed data into Excel format with the expected output.
+
 For this task, I have set up a virtual environment to maintain a unified development environment (no actually pushed into this repo).
+
+
 The main script is `task1.py`. While the script is mostly self-explanatory, let's break down the steps taken:
 
 For the dependencies, we use Pandas for handling datasets, Requests for making HTTP requests, and Openpyxl for Excel file operations. Install these libraries using:
